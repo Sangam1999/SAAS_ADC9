@@ -10,6 +10,9 @@ So, in other words, I definitely think we should have put some effort into abidi
 Example:
 Let’s say that we’ve got a Rectangle class. As most rectangles that I’ve encountered it has a width and a height.
 Now our customer, Aldford (which apparently means “old river-ford”, did you know that?), wants us to build an application that can calculate the total area of a collection of rectangles.
+Example:
+Let’s say that we’ve got a Rectangle class. As most rectangles that I’ve encountered it has a width and a height.
+Now our customer, Aldford (which apparently means “old river-ford”, did you know that?), wants us to build an application that can calculate the total area of a collection of rectangles.
 
 That’s not a problem for us. We learned in school that the area of a rectangle is it’s width multiplied with it’s height and we mastered the for-each-loop a long time ago.
 We present our solution, the AreaCalculator class to Aldford and he signs us his praise. But he also wonders if we couldn’t extend it so that it could calculate the area of not only rectangles but of circles as well.
