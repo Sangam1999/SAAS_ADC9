@@ -4,6 +4,8 @@ This can be formulated mathematically as
 Let ϕ(x) be a property provable about objects x of type T.
 Then ϕ(y) should be true for objects y of type S, where S is a subtype of T.
 
+More generally it states that objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.
+
 Let’s take a look at an example of how to violate this principle
 
 class Post
@@ -63,6 +65,7 @@ class PostHandler
 }
 
 Let’s correct this
+
 
 class MentionPost : Post
 {
