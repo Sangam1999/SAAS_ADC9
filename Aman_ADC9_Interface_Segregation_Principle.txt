@@ -10,9 +10,6 @@ So, in other words, I definitely think we should have put some effort into abidi
 Example:
 Let’s say that we’ve got a Rectangle class. As most rectangles that I’ve encountered it has a width and a height.
 Now our customer, Aldford (which apparently means “old river-ford”, did you know that?), wants us to build an application that can calculate the total area of a collection of rectangles.
-Example:
-Let’s say that we’ve got a Rectangle class. As most rectangles that I’ve encountered it has a width and a height.
-Now our customer, Aldford (which apparently means “old river-ford”, did you know that?), wants us to build an application that can calculate the total area of a collection of rectangles.
 
 That’s not a problem for us. We learned in school that the area of a rectangle is it’s width multiplied with it’s height and we mastered the for-each-loop a long time ago.
 We present our solution, the AreaCalculator class to Aldford and he signs us his praise. But he also wonders if we couldn’t extend it so that it could calculate the area of not only rectangles but of circles as well.
@@ -26,3 +23,138 @@ Only, a week later he calls us and asks: “extending the AreaCalculator class t
 In a real world scenario where the code base is ten, a hundred or a thousand times larger and modifying the class means redeploying it’s assembly/package to five different servers that can be a pretty big problem. Oh, and in the real world Aldford would have changed the requirements five more times since you read the last sentence 
 A solution that abides by the Open/Closed Principle
 One way of solving this puzzle would be to create a base class for both rectangles and circles as well as any other shapes that Aldford can think of which defines an abstract method for calculating it’s area.Inheriting from Shape the Rectangle and Circle classes.As we’ve moved the responsibility of actually calculating the area away from AreaCalculator’s Area method it is now much simpler and robust as it can handle any type of Shape that we throw at it.In other words we’ve closed it for modification by opening it up for extension.
+
+
+
+This principle deals with the disadvantages of implementing big interfaces.
+Let’s look at the below IShape interface:
+
+
+interface IShape {
+    drawCircle();
+    drawSquare();
+    drawRectangle();
+}
+
+
+
+
+class Circle implements IShape {
+    drawCircle(){
+        //...
+    }
+    drawSquare(){
+        //...
+    }
+    drawRectangle(){
+        //...
+    }    
+}
+class Square implements IShape {
+    drawCircle(){
+        //...
+    }
+    drawSquare(){
+        //...
+    }
+    drawRectangle(){
+        //...
+    }    
+}
+class Rectangle implements IShape {
+    drawCircle(){
+        //...
+    }
+    drawSquare(){
+        //...
+    }
+    drawRectangle(){
+        //...
+    }    
+}
+
+
+interface IShape {
+    drawCircle();
+    drawSquare();
+    drawRectangle();
+    drawTriangle();
+}
+
+
+interface IShape {
+    draw();
+}
+interface ICircle {
+    drawCircle();
+}
+interface ISquare {
+    drawSquare();
+}
+interface IRectangle {
+    drawRectangle();
+}
+interface ITriangle {
+    drawTriangle();
+}
+class Circle implements ICircle {
+    drawCircle() {
+        //...
+    }
+}
+class Square implements ISquare {
+    drawSquare() {
+        //...
+    }
+}
+class Rectangle implements IRectangle {
+    drawRectangle() {
+        //...
+    }    
+}
+class Triangle implements ITriangle {
+    drawTriangle() {
+        //...
+    }
+}
+class CustomShape implements IShape {
+   draw(){
+      //...
+   }
+}
+
+
+The ICircle interface handles only the drawing of circles, IShape handles drawing of any shape :), ISquare handles the drawing of only squares and IRectangle handles drawing of rectangles.
+
+
+OR
+
+Classes (Circle, Rectangle, Square, Triangle, etc) can just inherit from the IShape interface and implement their own draw behavior.
+
+
+class Circle implements IShape {
+    draw(){
+        //...
+    }
+}
+
+class Triangle implements IShape {
+    draw(){
+        //...
+    }
+}
+
+class Square implements IShape {
+    draw(){
+        //...
+    }
+}
+
+class Rectangle implements IShape {
+    draw(){
+        //...
+    }
+}                                            
+
+
+We can then use the I -interfaces to create Shape specifics like Semi Circle, Right-Angled Triangle, Equilateral Triangle, Blunt-Edged Rectangle, etc.
