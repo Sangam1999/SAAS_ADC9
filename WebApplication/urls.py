@@ -24,14 +24,19 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('web/booking',home),
-    path("web/table",table),
-    path("web/save",data_save),
-    path("web/edit/<int:ID>",view_update_booking),
-    path("web/edit/update/<int:ID>",view_update_form_data_in_db),
-    path('web/delete/<int:ID>',delete_object),
-    path('',index),
-    path('home/',index),
+    path('',home),
+    path("table/",table),
+    path('table/booking',home),
+    path("table/table",table),
+    path("save",data_save),
+    path("table/save",data_save),
+    path("edit/<int:ID>",view_update_booking),
+    path("table/edit/<int:ID>",view_update_booking),
+    path("edit/update/<int:ID>",view_update_form_data_in_db),
+    path("table/edit/update/<int:ID>",view_update_form_data_in_db),
+    path('table/delete/<int:ID>',delete_object),
+    path('delete/<int:ID>',delete_object),
+    path('upload',index),
     path('normalupload',normalupload,name="noramalupload")
 
 ]
